@@ -10,7 +10,7 @@ console.log(a)
 console.log(con)
 {
     var a=20
-    let b=30
+    let b
     console.log(a)
     console.log(con)
 }
