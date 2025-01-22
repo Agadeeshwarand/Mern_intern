@@ -1,59 +1,51 @@
-import Home from"./components/FunctionalComponents/Home"
-import About from "./components/FunctionalComponents/About"
+// eslint-disable-next-line no-unused-vars
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/FunctionalComponents/Home";
+import About from "./components/FunctionalComponents/About";
+// eslint-disable-next-line no-unused-vars
 import ClassCompEG from "./components/classComponents/ClassCompEG";
-import Gallery from "./components/FunctionalComponents/gallery";
+import Gallery from "./components/FunctionalComponents/Gallery";
 import Contact from "./components/FunctionalComponents/Contact";
 import Navbar from "./components/FunctionalComponents/Navbar";
-import {BrowserRouter, Routes,Route} from 'react-router-dom';
-import Signup from "./components/FunctionalComponents/signup";
-import Gallery from "./components/FunctionalComponents/Gallery"
-import Contact from "./components/FunctionalComponents/Contact"
-import Navbar from "./components/FunctionalComponents/Navbar"
-import Signup from "./components/FunctionalComponents/signup"
-import Login from "./components/FunctionalComponents/Login"
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Signup from "./components/FunctionalComponents/Signup";
+import Login from "./components/FunctionalComponents/Login";
 import "./App.css";
-import { useState } from "react";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const handleLogin = () => {
     setIsAuthenticated(true);
-  
   };
+
   const handleLogout = () => {
     setIsAuthenticated(false);
-  
   };
-  return (<div>
-  <BrowserRouter>
-  {isAuthenticated && <Navbar onLogout = {handleLogout}/>}
-    <Navbar/>
-      <Routes>
-        <Route path='/' element={<Home/>}></Route>
-      {!isAuthenticated ? (
-          <>
-            <Route path="/" element={<Signup onLogin={handleLogin} />} />
-            <Route path="/Login" element={<Login onLogin={handleLogin} />} />
-      </>
-  ):(
-  <>
-        
-        <Route path='/Home' element={<Home/>}></Route>
-        <Route path='/About' element={<About/>}></Route>
-        <Route path="/Gallery" element={<Gallery image="SECE logo" page="Gallery"/>}></Route>
-        <Route path="/Contact" element={<Contact/>}></Route>
-        <Route path="/Signup" element={<Signup/>}></Route>
-      </Routes>
-        
-        </>
-  )}
-  </Routes>
-  </BrowserRouter>
-  </div>
-      )
-}
-};
 
-export default App;
+  return (
+    <div>
+      <BrowserRouter>
+        {isAuthenticated && <Navbar onLogout={handleLogout} />}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {!isAuthenticated ? (
+            <>
+              <Route path="/Signup" element={<Signup onLogin={handleLogin} />} />
+              <Route path="/Login" element={<Login onLogin={handleLogin} />} />
+            </>
+          ) : (
+            <>
+              <Route path="/Home" element={<Home />} />
+              <Route path="/About" element={<About />} />
+              <Route path="/Gallery" element={<Gallery image="SECE logo" page="Gallery" />} />
+              <Route path="/Contact" element={<Contact />} />
+            </>
+          )}
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
 export default App;
