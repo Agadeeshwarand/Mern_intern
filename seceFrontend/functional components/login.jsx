@@ -1,10 +1,9 @@
 import { useNavigate, Link } from "react-router-dom";
-
 const Login = (props) => {
 const navigate = useNavigate();
-
   const handleLogin = (e) =>{
     e.preventDefault()
+    // eslint-disable-next-line react/prop-types
     props.onLogin();
     navigate("/home");
   }
@@ -16,9 +15,8 @@ const navigate = useNavigate();
           Password : <input type="password" placeholder="password" />
           <input type="submit" value="submit" />
         </form>
-        Don't have account?<Link to="/" > Signup</Link>
+        Dont have account?<Link to="/" > Signup</Link>
     </div>
   )
 }
-
 export default Login
