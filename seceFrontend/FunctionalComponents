@@ -1,7 +1,0 @@
-const Home = () => {
-    return (
-        <div>
-            <h2>Welcome to React Function</h2>
-        </div>
-    )
-}
